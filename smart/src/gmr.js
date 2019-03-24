@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import {geolocated} from 'react-geolocated';
+import point from './map-marker-icon.png';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class SimpleMap extends Component {
   static defaultProps = {
     center: {
-      lat: 59.95,
-      lng: 30.33
+      lng: -77.0486352,
+      lat: 38.8996301
     },
-    zoom: 11
+    spot1: {
+      lng: -77.0474352,
+      lat: 38.8998301
+    },
+    spot2: {
+      lng: -77.0488352,
+      lat: 38.8996301
+    },
+	
+    zoom: 16
   };
 
   render() {
@@ -19,22 +29,7 @@ class SimpleMap extends Component {
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key:'AIzaSyC02JJiLtNy8XKna8HF4fCnLTbZBUYvQzQ'}}
-          defaultCenter={{
-		  	lat: this.props.isGeolocationAvailable? 
-					(this.props.isGeolocationEnabled? 
-					 	this.props.coords ? 
-							this.props.coords.latitude
-							: 59.955413
-						: 59.955413) 
-					: 59.955413,
-			lng: this.props.isGeolocationAvailable? 
-					(this.props.isGeolocationEnabled? 
-					 	this.props.coords ? 
-							this.props.coords.longitude
-							: 30.33
-						: 30.33) 
-					: 30.33,
-		  }}
+          defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
           <AnyReactComponent
@@ -50,6 +45,18 @@ class SimpleMap extends Component {
             lng={30.337844}
             text={'Kreyser Avrora'}
           />
+
+		  <AnyReactComponent 
+		  	lat={this.props.spot1.lat}
+		  	lng={this.props.spot1.lng}
+			text={<img src={point} width="32"/>}
+		  />
+		  
+		  <AnyReactComponent 
+		  	lat={this.props.spot2.lat}
+		  	lng={this.props.spot2.lng}
+			text={<img src={point} width="32"/>}
+		  />
         </GoogleMapReact>
       </div>
     );

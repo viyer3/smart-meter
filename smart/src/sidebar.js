@@ -3,6 +3,13 @@ import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/rea
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 class AppSidebar extends Component {
+  constructor(props){
+  	super(props)
+	this.state = {
+	
+	}
+  }
+
   render() {
     return (
 	<SideNav
