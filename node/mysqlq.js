@@ -22,9 +22,12 @@ app.get('/transactions/:plate', function (req, res) {
 	console.log('connected');
 
 	connection.query("SELECT trans_id, loc_id, start_time, start_date, MINUTE(TIMEDIFF(cast(concat(end_date, ' ', end_time) as datetime), cast(concat(start_date, ' ', start_time) as datetime)))*Price AS Cost FROM user NATURAL JOIN transaction WHERE plate_num = " + req.params['plate'] + ';', function (error, results, fields) {
-		if (error) throw error;
-		console.log(results)
-		res.send(results)
+		if(error){
+			res.send(error);
+		}else{
+			console.log(results);
+			res.send(results);
+		}
 	});
 
 	//connection.end();
@@ -37,9 +40,12 @@ app.get('/total/:id', function (req, res) {
 	console.log('connected');
 
 	connection.query("SELECT fname, lname, SUM(MINUTE(TIMEDIFF(cast(concat(end_date, ' ', end_time) as datetime), cast(concat(start_date, ' ', start_time) as datetime)))*Price) AS Balance FROM user NATURAL JOIN transaction NATURAL JOIN account WHERE user_id = " + req.params['id'] + ';', function (error, results, fields) {
-		if (error) throw error;
-		console.log(results)
-		res.send(results)
+		if(error){
+			res.send(error);
+		}else{
+			console.log(results);
+			res.send(results);
+		}
 	});
 
 	//connection.end();
