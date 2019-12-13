@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import User from './User';
 import Balance from './Balance';
+import SQLTest from './SQLTest';
 import * as serviceWorker from './serviceWorker';
 
 const routing = (
@@ -13,6 +14,7 @@ const routing = (
 			<Route exact path="/" component={App} />
 			<Route path="/trans/:plate" component={User} />
 			<Route path="/bal/:id" component={Balance} />
+			<Route path="/test-metre" component={SQLTest} />
 		</div>
 	</Router>
 )
