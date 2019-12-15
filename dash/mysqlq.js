@@ -1,8 +1,8 @@
-const express = require('express');
+const express	 = require('express');
 const bodyParser = require('body-parser');
 const mysql      = require('mysql2');
-const cors = require('cors')
-// https://github.com/mysqljs/mysql
+const cors 	 = require('cors')
+
 const connection = mysql.createConnection({
 	host     : '172.17.0.2',
 	user     : 'root',
@@ -11,11 +11,10 @@ const connection = mysql.createConnection({
 	insecureAuth: true,
 });
 
-// Initialize the app
 const app = express();
-
 app.use(cors())
 
+// https://expressjs.com/en/guide/routing.html
 app.get('/test', (req, res) => {
 	console.log("Incoming test");
 	connection.query("SELECT * FROM user;", (err, result, fields) => {
@@ -27,11 +26,8 @@ app.get('/test', (req, res) => {
 	});
 });
 
-// https://expressjs.com/en/guide/routing.html
 app.get('/transactions/:plate', function (req, res) {
-	console.log('connecting...');
 	//connection.connect();
-	console.log('connected');
 
 	connection.query('SELECT loc_id, start_time, MINUTE(TIMEDIFF(end_time, start_time))*rate AS Cost FROM user NATURAL JOIN transaction WHERE plate = "' + req.params['plate'] + '";', function (error, results, fields) {
 		if(error){
@@ -62,7 +58,8 @@ app.get('/total/:id', function (req, res) {
 
 	//connection.end();
 });
+
 // Start the server
 app.listen(3003, () => {
- console.log('Go to http://localhost:3003/posts to see posts');
+	console.log('Node started at http://localhost:3003/');
 });
