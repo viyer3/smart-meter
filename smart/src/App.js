@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
-import GoogleMapReact from 'google-map-react';
-import SimpleMap from './gmr.js';
-import logo from './logo.svg';
+import SimpleMap from './SimpleMap';
+import AppSidebar from './sidebar';
 import './App.css';
-import AppSidebar from './sidebar.js';
 
 class App extends Component {
   render() {

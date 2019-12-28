@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import GoogleMapReact from 'google-map-react';
-import SimpleMap from './gmr.js';
 import base64 from 'base-64';
-import logo from './logo.svg';
 import './App.css';
-import AppSidebar from './sidebar.js';
+import AppSidebar from './sidebar';
 
-class Balance extends Component {
+class Login extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -85,13 +81,11 @@ class Balance extends Component {
 						<button onClick={this.doLogin}>yeet</button>
 					</div>
 				}
-				{/*this.state.user !== undefined && <SimpleMap/>*/}
 				{this.state.sessid}
 			</header>
-			{/*this.state.user !== undefined && <QSidebar name={this.state.user['fname']} bal={-1}/>*/}
 		</div>
 	);
 	}
 }
 
-export default Balance;
+export default Login;
