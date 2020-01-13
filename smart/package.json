@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "@trendmicro/react-sidenav": "^0.4.5",
+    "base-64": "^0.1.0",
     "google-map-react": "^1.1.2",
     "react": "^16.8.5",
+    "react-cookies": "^0.1.1",
     "react-dom": "^16.8.5",
     "react-geolocated": "^2.4.1",
     "react-icons": "^3.5.0",

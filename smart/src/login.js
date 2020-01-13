@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import base64 from 'base-64';
-import './App.css';
-import AppSidebar from './sidebar';
+import cookie from 'react-cookies';
 
 class Login extends Component {
 	constructor(props) {
@@ -50,7 +49,9 @@ class Login extends Component {
 		.then(res => res.text())
 		.then(res => {
 			this.setState({sessid: res})
+			this.props.token = res
 			//create session cookie
+			cookie.save("sessid", res)
 		})
 		.catch(err => console.log(err))
 	}
